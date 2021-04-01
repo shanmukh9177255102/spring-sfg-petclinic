@@ -12,3 +12,10 @@ public class IndexdController {
     }
 
 }
+/*
+linkedlist
+arrays
+paranthesis - balanced, longest
+infix,prefix,postfix
+core java concepts
+ */
