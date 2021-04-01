@@ -1,13 +1,12 @@
 package org.springframewor.sfpetclinicdata.services.map;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import org.springframewor.sfpetclinicdata.model.BaseEntity;
 
-public class AbstractMapService<T,ID>{
+import java.util.*;
 
-    protected Map<ID,T> map = new HashMap<>();
+public class AbstractMapService<T extends BaseEntity,ID extends Long>{
+
+    protected Map<Long,T> map = new HashMap<>();
 
     Set<T> findAll(){
         return new HashSet<>(map.values());
@@ -16,8 +15,14 @@ public class AbstractMapService<T,ID>{
     T findById(ID id){
       return map.get(id);
     }
-    T save(ID id,T obj){
-        map.put(id,obj);
+    T save(T obj){
+        if(obj != null){
+            if(obj.getId() == null) {
+                obj.setId(getNextId());
+            } map.put(obj.getId(), obj);
+        }else{
+            throw new RuntimeException("Object cannot be saved..");
+        }
         return obj;
     }
     void deleteById(ID id){
@@ -26,5 +31,9 @@ public class AbstractMapService<T,ID>{
     }
     void delete(T object){
         map.entrySet().removeIf(e -> e.getValue().equals(object) );
+    }
+
+    Long getNextId(){
+        return map.isEmpty() ? 1L : Collections.max(map.keySet())+1;
     }
 }
