@@ -4,10 +4,11 @@ import java.lang.Long;
 
 import org.springframewor.sfpetclinicdata.model.Vet;
 import org.springframewor.sfpetclinicdata.services.CrudService;
+import org.springframewor.sfpetclinicdata.services.VetService;
 
 import java.util.Set;
 
-public class VetServiceMap extends AbstractMapService<Vet,Long> implements CrudService<Vet,Long> {
+public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService {
 
     @Override
     public Set<Vet> findAll() {
