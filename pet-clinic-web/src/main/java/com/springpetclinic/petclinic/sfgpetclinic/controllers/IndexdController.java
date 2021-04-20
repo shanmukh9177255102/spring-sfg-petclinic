@@ -11,6 +11,11 @@ public class IndexdController {
         return "index";
     }
 
+    @RequestMapping("/oops")
+    public String findOwners() {
+        return "notImplemented";
+    }
+
 }
 /*
 linkedlist
