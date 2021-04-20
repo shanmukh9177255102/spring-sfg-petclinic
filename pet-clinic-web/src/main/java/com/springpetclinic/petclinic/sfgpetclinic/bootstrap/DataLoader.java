@@ -25,10 +25,7 @@ public class DataLoader implements CommandLineRunner {
         this.specialityService = specialityService;
     }
 
-
-    @Override
-    public void run(String... args) throws Exception {
-
+    public void loadData() {
         Speciality s1 = new Speciality();
         s1.setDescription("radiology");
         Speciality splRadio = specialityService.save(s1);
@@ -96,6 +93,15 @@ public class DataLoader implements CommandLineRunner {
         vetService.save(vet2);
         System.out.println("loaded vets...");
 
+    }
 
+
+    @Override
+    public void run(String... args) throws Exception {
+
+        int count = petTypeService.findAll().size();
+        if(count == 0){
+            loadData();
+        }
     }
 }
