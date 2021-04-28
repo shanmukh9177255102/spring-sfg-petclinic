@@ -1,5 +1,6 @@
 package org.springframewor.sfpetclinicdata.services.springdatajpa;
 
+import lombok.RequiredArgsConstructor;
 import org.springframewor.sfpetclinicdata.model.Vet;
 import org.springframewor.sfpetclinicdata.respository.VetRepository;
 import org.springframewor.sfpetclinicdata.services.VetService;
@@ -9,15 +10,13 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
 
+@RequiredArgsConstructor
 @Service
 @Profile("springdatajpa")
 public class VetSDJpaService implements VetService {
 
     private final VetRepository vetRepository;
 
-    public VetSDJpaService(VetRepository vetRepository) {
-        this.vetRepository = vetRepository;
-    }
 
     @Override
     public Set<Vet> findAll() {

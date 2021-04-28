@@ -1,5 +1,6 @@
 package org.springframewor.sfpetclinicdata.services.map;
 
+import lombok.RequiredArgsConstructor;
 import org.springframewor.sfpetclinicdata.model.Owner;
 import org.springframewor.sfpetclinicdata.model.Pet;
 import org.springframewor.sfpetclinicdata.services.CrudService;
@@ -11,17 +12,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@RequiredArgsConstructor
 @Service
 @Profile({"default","map"})
 public class OwneerServiceMap extends AbstractMapService<Owner,Long> implements OwnersService {
 
     private final PetTypeService petTypeService;
     private final PetService petService;
-
-    public OwneerServiceMap(PetTypeService petTypeService, PetService petService) {
-        this.petTypeService = petTypeService;
-        this.petService = petService;
-    }
 
     @Override
     public Set<Owner> findAll() {

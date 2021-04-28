@@ -1,5 +1,6 @@
 package org.springframewor.sfpetclinicdata.services.springdatajpa;
 
+import lombok.RequiredArgsConstructor;
 import org.springframewor.sfpetclinicdata.model.Visit;
 import org.springframewor.sfpetclinicdata.respository.VisitRepository;
 import org.springframewor.sfpetclinicdata.services.VisitService;
@@ -9,14 +10,11 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
 
+@RequiredArgsConstructor
 @Service
 @Profile("springdatajpa")
 public class VisitSDJpaService implements VisitService {
     private final VisitRepository visitRepository;
-
-    public VisitSDJpaService(VisitRepository visitRepository) {
-        this.visitRepository = visitRepository;
-    }
 
     @Override
     public Set<Visit> findAll() {

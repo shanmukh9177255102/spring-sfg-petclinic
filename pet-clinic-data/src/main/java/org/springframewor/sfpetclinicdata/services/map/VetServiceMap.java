@@ -2,6 +2,7 @@ package org.springframewor.sfpetclinicdata.services.map;
 
 import java.lang.Long;
 
+import lombok.RequiredArgsConstructor;
 import org.springframewor.sfpetclinicdata.model.Speciality;
 import org.springframewor.sfpetclinicdata.model.Vet;
 import org.springframewor.sfpetclinicdata.services.SpecialityService;
@@ -11,15 +12,12 @@ import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
+@RequiredArgsConstructor
 @Service
 @Profile({"default","map"})
 public class VetServiceMap extends AbstractMapService<Vet,Long> implements VetService {
 
     private final SpecialityService specialityService;
-
-    public VetServiceMap(SpecialityService specialityService) {
-        this.specialityService = specialityService;
-    }
 
     @Override
     public Set<Vet> findAll() {

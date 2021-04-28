@@ -1,5 +1,6 @@
 package org.springframewor.sfpetclinicdata.services.springdatajpa;
 
+import lombok.RequiredArgsConstructor;
 import org.springframewor.sfpetclinicdata.model.PetType;
 import org.springframewor.sfpetclinicdata.respository.PetTypeRepository;
 import org.springframewor.sfpetclinicdata.services.PetTypeService;
@@ -10,15 +11,12 @@ import org.springframework.stereotype.Service;
 import java.util.HashSet;
 import java.util.Set;
 
+@RequiredArgsConstructor
 @Service
 @Profile("springdatajpa")
 public class PetTypeSDJpaService implements PetTypeService {
 
     private final PetTypeRepository petTypeRepository;
-
-    public PetTypeSDJpaService(PetTypeRepository petTypeRepository) {
-        this.petTypeRepository = petTypeRepository;
-    }
 
     @Override
     public Set<PetType> findAll() {
